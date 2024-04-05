@@ -4,6 +4,11 @@
       "title": "Northwind CRUD",
       "version": "v1"
     },
+    "servers": [
+      {
+        "url": "https://localhost:7244"
+      }
+    ],
     "paths": {
       "/Auth/Login": {
         "post": {
@@ -14,22 +19,22 @@
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoginInputModel"
+                  "$ref": "#/components/schemas/LoginDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoginInputModel"
+                  "$ref": "#/components/schemas/LoginDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoginInputModel"
+                  "$ref": "#/components/schemas/LoginDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoginInputModel"
+                  "$ref": "#/components/schemas/LoginDto"
                 }
               }
             }
@@ -67,22 +72,22 @@
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegisterInputModel"
+                  "$ref": "#/components/schemas/RegisterDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegisterInputModel"
+                  "$ref": "#/components/schemas/RegisterDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegisterInputModel"
+                  "$ref": "#/components/schemas/RegisterDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegisterInputModel"
+                  "$ref": "#/components/schemas/RegisterDto"
                 }
               }
             }
@@ -111,10 +116,10 @@
           }
         }
       },
-      "/Category": {
+      "/Categories": {
         "get": {
           "tags": [
-            "Category"
+            "Categories"
           ],
           "responses": {
             "200": {
@@ -124,7 +129,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/CategoryInputModel"
+                      "$ref": "#/components/schemas/CategoryDto"
                     }
                   }
                 },
@@ -132,7 +137,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/CategoryInputModel"
+                      "$ref": "#/components/schemas/CategoryDto"
                     }
                   }
                 },
@@ -140,46 +145,38 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/CategoryInputModel"
+                      "$ref": "#/components/schemas/CategoryDto"
                     }
                   }
                 }
               }
-            },
-            "401": {
-              "description": "Unauthorized"
             }
-          },
-          "security": [
-            {
-              "Bearer": [ ]
-            }
-          ]
+          }
         },
         "post": {
           "tags": [
-            "Category"
+            "Categories"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               }
             }
@@ -190,17 +187,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDetailsDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDetailsDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDetailsDto"
                   }
                 }
               }
@@ -217,28 +214,28 @@
         },
         "put": {
           "tags": [
-            "Category"
+            "Categories"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryInputModel"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               }
             }
@@ -249,17 +246,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 }
               }
@@ -275,10 +272,10 @@
           ]
         }
       },
-      "/Category/{id}": {
+      "/Categories/{id}": {
         "get": {
           "tags": [
-            "Category"
+            "Categories"
           ],
           "parameters": [
             {
@@ -297,34 +294,26 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 }
               }
-            },
-            "401": {
-              "description": "Unauthorized"
             }
-          },
-          "security": [
-            {
-              "Bearer": [ ]
-            }
-          ]
+          }
         },
         "delete": {
           "tags": [
-            "Category"
+            "Categories"
           ],
           "parameters": [
             {
@@ -343,17 +332,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CategoryInputModel"
+                    "$ref": "#/components/schemas/CategoryDto"
                   }
                 }
               }
@@ -369,10 +358,61 @@
           ]
         }
       },
-      "/Customer": {
+      "/Categories/{id}/Details": {
         "get": {
           "tags": [
-            "Customer"
+            "Categories"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CategoryDetailsDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CategoryDetailsDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CategoryDetailsDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Categories/{id}/Products": {
+        "get": {
+          "tags": [
+            "Categories"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
           ],
           "responses": {
             "200": {
@@ -382,7 +422,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/CustomerInputModel"
+                      "$ref": "#/components/schemas/ProductDto"
                     }
                   }
                 },
@@ -390,7 +430,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/CustomerInputModel"
+                      "$ref": "#/components/schemas/ProductDto"
                     }
                   }
                 },
@@ -398,46 +438,76 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/CustomerInputModel"
+                      "$ref": "#/components/schemas/ProductDto"
                     }
                   }
                 }
               }
-            },
-            "401": {
-              "description": "Unauthorized"
             }
-          },
-          "security": [
-            {
-              "Bearer": [ ]
+          }
+        }
+      },
+      "/Customers": {
+        "get": {
+          "tags": [
+            "Customers"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CustomerDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CustomerDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CustomerDto"
+                    }
+                  }
+                }
+              }
             }
-          ]
+          }
         },
         "post": {
           "tags": [
-            "Customer"
+            "Customers"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               }
             }
@@ -448,17 +518,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 }
               }
@@ -475,28 +545,28 @@
         },
         "put": {
           "tags": [
-            "Customer"
+            "Customers"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomerInputModel"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               }
             }
@@ -507,17 +577,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 }
               }
@@ -533,10 +603,10 @@
           ]
         }
       },
-      "/Customer/{id}": {
+      "/Customers/{id}": {
         "get": {
           "tags": [
-            "Customer"
+            "Customers"
           ],
           "parameters": [
             {
@@ -554,34 +624,26 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 }
               }
-            },
-            "401": {
-              "description": "Unauthorized"
             }
-          },
-          "security": [
-            {
-              "Bearer": [ ]
-            }
-          ]
+          }
         },
         "delete": {
           "tags": [
-            "Customer"
+            "Customers"
           ],
           "parameters": [
             {
@@ -599,17 +661,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/CustomerInputModel"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 }
               }
@@ -625,10 +687,20 @@
           ]
         }
       },
-      "/Employee": {
+      "/Customers/{id}/Orders": {
         "get": {
           "tags": [
-            "Employee"
+            "Customers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
           ],
           "responses": {
             "200": {
@@ -638,7 +710,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/EmployeeInputModel"
+                      "$ref": "#/components/schemas/OrderDto"
                     }
                   }
                 },
@@ -646,7 +718,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/EmployeeInputModel"
+                      "$ref": "#/components/schemas/OrderDto"
                     }
                   }
                 },
@@ -654,46 +726,76 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/EmployeeInputModel"
+                      "$ref": "#/components/schemas/OrderDto"
                     }
                   }
                 }
               }
-            },
-            "401": {
-              "description": "Unauthorized"
             }
-          },
-          "security": [
-            {
-              "Bearer": [ ]
+          }
+        }
+      },
+      "/Employees": {
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                }
+              }
             }
-          ]
+          }
         },
         "post": {
           "tags": [
-            "Employee"
+            "Employees"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               }
             }
@@ -704,17 +806,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 }
               }
@@ -731,28 +833,28 @@
         },
         "put": {
           "tags": [
-            "Employee"
+            "Employees"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeInputModel"
+                  "$ref": "#/components/schemas/EmployeeDto"
                 }
               }
             }
@@ -763,17 +865,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 }
               }
@@ -789,10 +891,10 @@
           ]
         }
       },
-      "/Employee/{id}": {
+      "/Employees/{id}": {
         "get": {
           "tags": [
-            "Employee"
+            "Employees"
           ],
           "parameters": [
             {
@@ -811,34 +913,26 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 }
               }
-            },
-            "401": {
-              "description": "Unauthorized"
             }
-          },
-          "security": [
-            {
-              "Bearer": [ ]
-            }
-          ]
+          }
         },
         "delete": {
           "tags": [
-            "Employee"
+            "Employees"
           ],
           "parameters": [
             {
@@ -857,17 +951,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/EmployeeInputModel"
+                    "$ref": "#/components/schemas/EmployeeDto"
                   }
                 }
               }
@@ -883,10 +977,61 @@
           ]
         }
       },
-      "/Order": {
+      "/Employees/{id}/Superior": {
         "get": {
           "tags": [
-            "Order"
+            "Employees"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EmployeeDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EmployeeDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EmployeeDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Employees/{id}/Subordinates": {
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
           ],
           "responses": {
             "200": {
@@ -896,7 +1041,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/OrderInputModel"
+                      "$ref": "#/components/schemas/EmployeeDto"
                     }
                   }
                 },
@@ -904,7 +1049,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/OrderInputModel"
+                      "$ref": "#/components/schemas/EmployeeDto"
                     }
                   }
                 },
@@ -912,8 +1057,159 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/OrderInputModel"
+                      "$ref": "#/components/schemas/EmployeeDto"
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Employees/{id}/Orders": {
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Employees/{id}/Teritories": {
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Employees/Teritory": {
+        "post": {
+          "tags": [
+            "Employees"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeTerritoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeTerritoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeTerritoryDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeTerritoryDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EmployeeTerritoryDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EmployeeTerritoryDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EmployeeTerritoryDto"
                   }
                 }
               }
@@ -927,31 +1223,69 @@
               "Bearer": [ ]
             }
           ]
+        }
+      },
+      "/Orders": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "post": {
           "tags": [
-            "Order"
+            "Orders"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               }
             }
@@ -962,17 +1296,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 }
               }
@@ -989,28 +1323,28 @@
         },
         "put": {
           "tags": [
-            "Order"
+            "Orders"
           ],
           "requestBody": {
             "content": {
               "application/json-patch+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               },
               "application/*+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrderInputModel"
+                  "$ref": "#/components/schemas/OrderDto"
                 }
               }
             }
@@ -1021,17 +1355,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 }
               }
@@ -1047,10 +1381,10 @@
           ]
         }
       },
-      "/Order/{id}": {
+      "/Orders/{id}": {
         "get": {
           "tags": [
-            "Order"
+            "Orders"
           ],
           "parameters": [
             {
@@ -1069,17 +1403,427 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/OrderDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Orders"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Orders/{id}/Details": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDetailDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDetailDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDetailDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Orders/{id}/Customer": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Orders/{id}/Employee": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Orders/{id}/Shipper": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Orders/{id}/Products": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Orders/retrieve/{ordersToRetrieve}": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "parameters": [
+            {
+              "name": "ordersToRetrieve",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Products": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Products"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
                   }
                 }
               }
@@ -1094,9 +1838,70 @@
             }
           ]
         },
-        "delete": {
+        "put": {
           "tags": [
-            "Order"
+            "Products"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Products/{id}": {
+        "get": {
+          "tags": [
+            "Products"
           ],
           "parameters": [
             {
@@ -1115,17 +1920,55 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/ProductDto"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/ProductDto"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/OrderInputModel"
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
                   }
                 }
               }
@@ -1139,12 +1982,1542 @@
               "Bearer": [ ]
             }
           ]
+        }
+      },
+      "/Products/{id}/Category": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Products/{id}/OrderDetails": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDetailDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDetailDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDetailDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Products/{id}/Supplier": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Regions": {
+        "get": {
+          "tags": [
+            "Regions"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RegionDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RegionDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RegionDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Regions"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Regions"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Regions/{id}": {
+        "get": {
+          "tags": [
+            "Regions"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Regions"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegionDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Regions/{id}/Territories": {
+        "get": {
+          "tags": [
+            "Regions"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Sales/ByCategory": {
+        "get": {
+          "tags": [
+            "Sales"
+          ],
+          "parameters": [
+            {
+              "name": "categoryName",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "orderYear",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Sales/ByCountry/{country}": {
+        "get": {
+          "tags": [
+            "Sales"
+          ],
+          "parameters": [
+            {
+              "name": "country",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "startDate",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "endDate",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Sales/ByYear/{year}": {
+        "get": {
+          "tags": [
+            "Sales"
+          ],
+          "parameters": [
+            {
+              "name": "year",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            {
+              "name": "startMounth",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            {
+              "name": "endMounth",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SalesDto"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Shippers": {
+        "get": {
+          "tags": [
+            "Shippers"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ShipperDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ShipperDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ShipperDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Shippers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Shippers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipperDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Shippers/{id}": {
+        "get": {
+          "tags": [
+            "Shippers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Shippers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ShipperDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Shippers/{id}/Orders": {
+        "get": {
+          "tags": [
+            "Shippers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/OrderDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Suppliers": {
+        "get": {
+          "tags": [
+            "Suppliers"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SupplierDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SupplierDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SupplierDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Suppliers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Suppliers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplierDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Suppliers/{id}": {
+        "get": {
+          "tags": [
+            "Suppliers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Suppliers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SupplierDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Suppliers/{id}/Products": {
+        "get": {
+          "tags": [
+            "Suppliers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Territories": {
+        "get": {
+          "tags": [
+            "Territories"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TerritoryDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TerritoryDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TerritoryDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Territories"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Territories"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TerritoryDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Territories/{id}": {
+        "get": {
+          "tags": [
+            "Territories"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Territories"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TerritoryDto"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "Bearer": [ ]
+            }
+          ]
+        }
+      },
+      "/Territories/{id}/Employees": {
+        "get": {
+          "tags": [
+            "Territories"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EmployeeDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Territories/{id}/Region": {
+        "get": {
+          "tags": [
+            "Territories"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RegionDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RegionDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RegionDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
     "components": {
       "schemas": {
-        "AddressInputModel": {
+        "AddressDto": {
           "type": "object",
           "properties": {
             "street": {
@@ -1174,7 +3547,29 @@
           },
           "additionalProperties": false
         },
-        "CategoryInputModel": {
+        "CategoryDetailsDto": {
+          "type": "object",
+          "properties": {
+            "categoryId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "picture": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "CategoryDto": {
           "type": "object",
           "properties": {
             "categoryId": {
@@ -1192,7 +3587,7 @@
           },
           "additionalProperties": false
         },
-        "CustomerInputModel": {
+        "CustomerDto": {
           "required": [
             "companyName"
           ],
@@ -1203,6 +3598,7 @@
               "nullable": true
             },
             "companyName": {
+              "minLength": 1,
               "type": "string"
             },
             "contactName": {
@@ -1214,40 +3610,53 @@
               "nullable": true
             },
             "address": {
-              "$ref": "#/components/schemas/AddressInputModel"
+              "$ref": "#/components/schemas/AddressDto"
             }
           },
           "additionalProperties": false
         },
-        "EmployeeInputModel": {
+        "EmployeeDto": {
+          "required": [
+            "employeeId"
+          ],
           "type": "object",
           "properties": {
             "employeeId": {
+              "minLength": 8,
               "type": "integer",
+              "description": "Number automatically assigned to new employee.",
               "format": "int32"
             },
             "lastName": {
               "type": "string",
+              "description": "Employee's last name.",
               "nullable": true
             },
             "firstName": {
               "type": "string",
+              "description": "Employee's first name.",
               "nullable": true
             },
             "title": {
               "type": "string",
+              "description": "Employee's title",
               "nullable": true
             },
             "titleOfCourtesy": {
               "type": "string",
+              "description": "Title used in salutations",
               "nullable": true
             },
             "birthDate": {
               "type": "string",
+              "description": "Employee's birth date",
+              "format": "date",
               "nullable": true
             },
             "hireDate": {
               "type": "string",
+              "description": "Employee's hire date",
+              "format": "date",
               "nullable": true
             },
             "addressId": {
@@ -1255,20 +3664,42 @@
               "nullable": true
             },
             "address": {
-              "$ref": "#/components/schemas/AddressInputModel"
+              "$ref": "#/components/schemas/AddressDto"
             },
             "notes": {
               "type": "string",
+              "description": "General information about employee's background.",
               "nullable": true
             },
             "avatarUrl": {
+              "type": "string",
+              "description": "Employee's avatar url.",
+              "format": "uri",
+              "nullable": true
+            },
+            "reportsTo": {
+              "type": "integer",
+              "description": "Employee's supervisor.",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "EmployeeTerritoryDto": {
+          "type": "object",
+          "properties": {
+            "employeeId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "territoryId": {
               "type": "string",
               "nullable": true
             }
           },
           "additionalProperties": false
         },
-        "LoginInputModel": {
+        "LoginDto": {
           "type": "object",
           "properties": {
             "email": {
@@ -1283,7 +3714,33 @@
           },
           "additionalProperties": false
         },
-        "OrderInputModel": {
+        "OrderDetailDto": {
+          "type": "object",
+          "properties": {
+            "orderId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "productId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "unitPrice": {
+              "type": "number",
+              "format": "double"
+            },
+            "quantity": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "discount": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "additionalProperties": false
+        },
+        "OrderDto": {
           "type": "object",
           "properties": {
             "orderId": {
@@ -1295,6 +3752,10 @@
               "nullable": true
             },
             "employeeId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "shipperId": {
               "type": "integer",
               "format": "int32"
             },
@@ -1318,17 +3779,74 @@
               "type": "string",
               "nullable": true
             },
-            "shipAddressId": {
-              "type": "string",
-              "nullable": true
-            },
             "shipAddress": {
-              "$ref": "#/components/schemas/AddressInputModel"
+              "$ref": "#/components/schemas/AddressDto"
             }
           },
           "additionalProperties": false
         },
-        "RegisterInputModel": {
+        "ProductDto": {
+          "type": "object",
+          "properties": {
+            "productId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "supplierId": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "categoryId": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "quantityPerUnit": {
+              "type": "string",
+              "nullable": true
+            },
+            "unitPrice": {
+              "type": "number",
+              "format": "double",
+              "nullable": true
+            },
+            "unitsInStock": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "unitsOnOrder": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "reorderLevel": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "discontinued": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "RegionDto": {
+          "type": "object",
+          "properties": {
+            "regionId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "regionDescription": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "RegisterDto": {
           "required": [
             "confirmedPassword",
             "email",
@@ -1337,14 +3855,126 @@
           "type": "object",
           "properties": {
             "email": {
+              "minLength": 1,
               "type": "string",
               "format": "email"
             },
             "password": {
+              "minLength": 1,
               "type": "string"
             },
             "confirmedPassword": {
+              "minLength": 1,
               "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "SalesDto": {
+          "type": "object",
+          "properties": {
+            "productId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "quantitySold": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "saleAmount": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "additionalProperties": false
+        },
+        "ShipperDto": {
+          "type": "object",
+          "properties": {
+            "shipperId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "companyName": {
+              "type": "string",
+              "nullable": true
+            },
+            "phone": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SupplierDto": {
+          "type": "object",
+          "properties": {
+            "supplierId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "companyName": {
+              "type": "string",
+              "nullable": true
+            },
+            "contactName": {
+              "type": "string",
+              "nullable": true
+            },
+            "contactTitle": {
+              "type": "string",
+              "nullable": true
+            },
+            "address": {
+              "type": "string",
+              "nullable": true
+            },
+            "city": {
+              "type": "string",
+              "nullable": true
+            },
+            "region": {
+              "type": "string",
+              "nullable": true
+            },
+            "postalCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "country": {
+              "type": "string",
+              "nullable": true
+            },
+            "phone": {
+              "type": "string",
+              "nullable": true
+            },
+            "fax": {
+              "type": "string",
+              "nullable": true
+            },
+            "homePage": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "TerritoryDto": {
+          "type": "object",
+          "properties": {
+            "territoryId": {
+              "type": "string",
+              "nullable": true
+            },
+            "territoryDescription": {
+              "type": "string",
+              "nullable": true
+            },
+            "regionId": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
             }
           },
           "additionalProperties": false
